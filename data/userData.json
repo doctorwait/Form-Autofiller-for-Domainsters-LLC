@@ -1,3 +1,18 @@
 {
-  "email": "example@example.example"
+  "email": "example@example.example",
+  "login": "jyfkjbyjhvl",
+  "password": "?Eljabw123ef0t!",
+  "firstName": "FirstName",
+  "lastName": "LastName",
+  "phoneType": "Home",
+  "phoneNumber": "1234567890",
+  "street": "E Waterman St",
+  "city": "Wichita",
+  "postalCode": "66062",
+  "country": "United States",
+  "stateProvince": "Kansas",
+  "vacancySource": "Job Board",
+  "spamAgreement": "Yes",
+  "jobType": "Good Job",
+  "employer": "My awesome employer"
 }

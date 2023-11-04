@@ -25,7 +25,32 @@ const fillForms = function () {
         document.getElementById('enterEmailSubmitButton').click();
       };
 
-      const runs = [runEmail];
+      /*
+      const runLoadResume = function (data) {
+        // TODO: доработать загрузку файлов.
+        chrome.runtime.sendMessage(
+          { contentScriptQuery: 'loadResume' },
+          function (resume) {
+            const input = document.getElementById(
+              'PortalProfileFields.Resume_File'
+            );
+            const dt = new DataTransfer();
+            dt.items.add(resume);
+            input.files = dt.files;
+            const event = new Event('change', {
+              bubbles: !0,
+            });
+            input.dispatchEvent(event);
+          }
+        );
+      };
+      **/
+
+      const runMainQuestions = function (data) {
+        
+      }
+
+      const runs = [runEmail, runMainQuestions];
 
       for (const run of runs) {
         try {
