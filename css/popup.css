@@ -1,15 +1,38 @@
 body {
   text-align: center;
-  width: 200px;
+  width: 150px;
+  height: fit-content;
 }
 
-button {
+.animated-button {
   width: 100%;
-  color: white;
-  background: linear-gradient(#01a9e1, #5bc4bc);
+  color: rgb(185, 255, 247);
+  background: linear-gradient(#015be1, #2029dc);
   border-width: 0px;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 5px;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 15px;
+  font-size: 1.5em;
+  transition: 0.5s;
+}
+
+.animated-button:hover:after {
+  opacity: 1;
+  right: 0;
+}
+
+.animated-button:active {
+  background: linear-gradient(#FFA500, #2029dc);
 }
