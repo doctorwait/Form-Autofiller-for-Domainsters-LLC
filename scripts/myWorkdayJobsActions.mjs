@@ -17,7 +17,7 @@ myWorkdayJobsBtn.addEventListener('click', () => {
 });
 
 const fillMyWorkdayJob = function () {
-  /* Найти по XPath и кликнуть или положить значение.**/
+
   function xPath(xpathExpression, value = '') {
     const resultType = XPathResult.FIRST_ORDERED_NODE_TYPE;
     const xpathResult = document.evaluate(
@@ -41,49 +41,19 @@ const fillMyWorkdayJob = function () {
     }
   }
 
-  function value(selector, value) {
-    const elem = document.getElementById(selector);
-    elem.value = value;
-    return elem;
-  }
   function click(selector) {
     const elem = document.getElementById(selector);
     elem.click();
     return elem;
   }
-  function pressEnter(elem) {
-    const event = new KeyboardEvent('keydown', {
-      key: 'Enter',
-      code: 'Enter',
-      which: 13,
-      keyCode: 13,
-      charCode: 13,
-      keyCodeVal: 13,
-      charCodeVal: 13,
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-    });
-    if (elem) {
-      elem.dispatchEvent(event);
-    } else {
-      document.dispatchEvent(event);
-    }
-  }
-  function dropdown(selector, ID) {
-    const list = document.getElementById(selector);
-    list.value = ID;
-    const event = new Event('change', { bubbles: true });
-    list.dispatchEvent(event);
-  }
-
+  
   chrome.runtime.sendMessage(
     { contentScriptQuery: 'loadJSON' },
     async function (data) {
       async function wait(sec = 1) {
         return new Promise(resolve => setTimeout(resolve, sec * 1000));
       }
-      // Некоторые элементы в списке сделаны пакетом инструкций...
+
       const runs = [
         [click, 'input-1'],
         [wait, 2],

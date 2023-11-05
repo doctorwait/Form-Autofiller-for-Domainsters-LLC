@@ -17,7 +17,7 @@ successFactorsBtn.addEventListener('click', () => {
 });
 
 const fillSuccessFactors = function () {
-  /* Найти по XPath и кликнуть или положить значение.**/
+
   function xPath(xpathExpression, value = '') {
     const resultType = XPathResult.FIRST_ORDERED_NODE_TYPE;
     const xpathResult = document.evaluate(
@@ -81,7 +81,6 @@ const fillSuccessFactors = function () {
           console.error('Ошибка в функции: ' + error);
         }
       }
-      alert('Done');
     }
   );
 };

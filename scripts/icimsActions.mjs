@@ -37,26 +37,6 @@ const fillIcims = function () {
         return new Promise(resolve => setTimeout(resolve, sec * 1000));
       }
 
-      /*
-      const runLoadResume = function (data) {
-        // TODO: доработать загрузку файлов.
-        chrome.runtime.sendMessage(
-          { contentScriptQuery: 'loadResume' },
-          function (resume) {
-            const input = document.getElementById(
-              'PortalProfileFields.Resume_File'
-              );
-              const dt = new DataTransfer();
-              dt.items.add(resume);
-              input.files = dt.files;
-            const event = new Event('change', {
-              bubbles: !0,
-            });
-            input.dispatchEvent(event);
-          }
-          );
-        };
-        **/
       const runs = [
         [value, 'email', data.email],
         [click, 'enterEmailSubmitButton'],
@@ -65,7 +45,7 @@ const fillIcims = function () {
         [value, 'PersonProfileFields.Password_Confirm', data.password],
         [value, 'PersonProfileFields.FirstName', data.firstName],
         [value, 'PersonProfileFields.LastName', data.lastName],
-        [dropdown, '-1_PersonProfileFields.PhoneType', '15757'], // TODO: Сделать выбор для пользователя
+        [dropdown, '-1_PersonProfileFields.PhoneType', '15757'],
         [value, '-1_PersonProfileFields.PhoneNumber', data.phoneNumber],
         [dropdown, '-1_PersonProfileFields.AddressType', '15763'],
         [value, '-1_PersonProfileFields.AddressStreet1', data.street],
