@@ -12,6 +12,7 @@
   "country": "United States",
   "stateProvince": "Kansas",
   "vacancySource": "Job Board",
+  "vacancySourceSpecified": "Indeed",
   "spamAgreement": "Yes",
   "jobType": "Good Job",
   "employer": "My awesome employer"
