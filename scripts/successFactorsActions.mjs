@@ -17,6 +17,30 @@ successFactorsBtn.addEventListener('click', () => {
 });
 
 const fillSuccessFactors = function () {
+  /* Найти по XPath и кликнуть или положить значение.**/
+  function xPath(xpathExpression, value = '') {
+    const resultType = XPathResult.FIRST_ORDERED_NODE_TYPE;
+    const xpathResult = document.evaluate(
+      xpathExpression,
+      document,
+      null,
+      resultType,
+      null
+    );
+    const element = xpathResult.singleNodeValue;
+
+    if (element) {
+      if (value != '') {
+        element.value = value;
+        element.dispatchEvent(new Event('input', { bubbles: true }));
+      } else {
+        element.click();
+      }
+    } else {
+      console.error("I'm so stupid to find that: " + xpathExpression);
+    }
+  }
+
   function value(selector, value) {
     document.getElementById(selector).value = value;
   }
@@ -32,13 +56,22 @@ const fillSuccessFactors = function () {
 
   chrome.runtime.sendMessage(
     { contentScriptQuery: 'loadJSON' },
-    async function (data) {
-      async function wait(sec = 1) {
-        return new Promise(resolve => setTimeout(resolve, sec * 1000));
+    function (data) {
+      function wait(sec = 1) {
+        return (new Promise(resolve => setTimeout(resolve, sec * 1000)))();
       }
 
       const runs = [
-        [value, 'email', data.email],
+        [value, 'fbclc_userName', data.email],
+        [value, 'fbclc_emailConf', data.email],
+        [value, 'fbclc_pwd', data.password],
+        [value, 'fbclc_pwdConf', data.password],
+        [value, 'fbclc_fName', data.firstName],
+        [value, 'fbclc_lName', data.lastName],
+        [dropdown, 'fbclc_country', 'US'],
+        [xPath, '//input[@name="fbclc_searPref" and @value="2"]'],
+        [wait, 2]
+        [click, 'dataPrivacyId'],
       ];
 
       for (const run of runs) {
@@ -48,10 +81,7 @@ const fillSuccessFactors = function () {
           console.error('Ошибка в функции: ' + error);
         }
       }
+      alert('Done');
     }
   );
-};
-
-const onResult = function (frames) {
-  window.close();
 };
