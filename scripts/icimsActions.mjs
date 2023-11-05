@@ -6,7 +6,7 @@ icimsBtn.addEventListener('click', () => {
       chrome.scripting.executeScript(
         {
           target: { tabId: tab.id, allFrames: true },
-          func: fillForms,
+          func: fillIcims,
         },
         onResult
       );
@@ -16,7 +16,7 @@ icimsBtn.addEventListener('click', () => {
   });
 });
 
-const fillForms = function () {
+const fillIcims = function () {
   function value(selector, value) {
     document.getElementById(selector).value = value;
   }
